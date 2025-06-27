@@ -30,7 +30,7 @@ export class ClaudeReviewer {
       const prompt = this.buildPrompt(analysisResult);
       
       const response = await this.anthropic.messages.create({
-        model: 'claude-3-sonnet-20240229',
+        model: 'claude-3-5-sonnet-20241022',
         max_tokens: 4000,
         messages: [
           {
