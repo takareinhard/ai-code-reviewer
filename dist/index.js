@@ -15,6 +15,13 @@ app.use((0, cors_1.default)());
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use('/webhook', webhook_handler_1.webhookRouter);
+app.get('/', (req, res) => {
+    res.json({
+        message: 'AI Code Reviewer API',
+        status: 'running',
+        endpoints: ['/health', '/webhook/github']
+    });
+});
 app.get('/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
