@@ -11,6 +11,9 @@
     "dev": "nodemon --exec ts-node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -34,3 +37,4 @@
     "typescript": "^5.8.3"
   }
 }
+
