@@ -29,6 +29,9 @@ WORKDIR /app
 # 依存関係のインストール
 RUN npm install
 
+# TypeScriptコンパイラに実行権限を付与
+RUN chmod +x node_modules/.bin/tsc
+
 # アプリケーションのビルド
 RUN npm run build
 
