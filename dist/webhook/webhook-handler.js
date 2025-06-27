@@ -40,6 +40,36 @@ exports.webhookRouter = void 0;
 const express_1 = require("express");
 const crypto_1 = __importDefault(require("crypto"));
 exports.webhookRouter = (0, express_1.Router)();
+// GET route for testing webhook endpoint
+exports.webhookRouter.get('/github', (req, res) => {
+    res.send(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>GitHub Webhook Status</title>
+      <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f5f5f5; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .status { color: #28a745; font-weight: bold; }
+        .method { color: #007bff; font-weight: bold; }
+        .note { color: #6c757d; font-style: italic; }
+        h1 { color: #333; }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <h1>🤖 AI Code Reviewer</h1>
+        <p class="status">✅ GitHub webhook endpoint is active</p>
+        <p><strong>Expected Method:</strong> <span class="method">POST</span></p>
+        <p class="note">📝 This endpoint expects POST requests from GitHub webhooks</p>
+        <hr>
+        <p><strong>Webhook URL:</strong> <code>/webhook/github</code></p>
+        <p><strong>Status:</strong> Ready to receive GitHub webhook events</p>
+      </div>
+    </body>
+    </html>
+  `);
+});
 function verifyWebhookSignature(payload, signature) {
     const secret = process.env.GITHUB_WEBHOOK_SECRET;
     if (!secret) {
