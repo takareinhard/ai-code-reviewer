@@ -26,9 +26,11 @@ WORKDIR /app
 # まずは基本的なDockerビルドプロセスを確立します。
 # ほとんどの場合、次のステップで解決します。
 
-# インストールとビルドを一つのRUNコマンドで実行
-RUN --mount=type=cache,id=s/a1cb0f3a-b1ec-4a2e-877f-d36ab06a7208-node_modules/cache,target=/app/node_modules/.cache \
-    npm install && npm run build
+# 依存関係のインストール
+RUN npm install
+
+# アプリケーションのビルド
+RUN npm run build
 
 # アプリケーションがリッスンするポート
 EXPOSE 8080
