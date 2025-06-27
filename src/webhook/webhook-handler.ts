@@ -3,6 +3,15 @@ import crypto from 'crypto';
 
 export const webhookRouter = Router();
 
+// GET route for testing webhook endpoint
+webhookRouter.get('/github', (req: Request, res: Response) => {
+  res.json({ 
+    message: 'GitHub webhook endpoint is active',
+    method: 'POST',
+    note: 'This endpoint expects POST requests from GitHub webhooks'
+  });
+});
+
 interface GitHubWebhookPayload {
   action: string;
   pull_request?: {
